@@ -1,7 +1,10 @@
 import { useRef, useState } from "react";
+import { useMyContext } from "../Context";
 import { useFrame } from "@react-three/fiber";
 
 export function SpinningBlocks() {
+	const x = useMyContext();
+	console.log("SpinningBlocks:", x);
 	return (
 		<>
 			<ambientLight />
