@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { ThreeApp } from "./three/ThreeApp";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [view, setView] = useState<"react" | "three">("react");
+	return (
+		<div className="App">
+			{view === "react" && (
+				<header className="App-header">
+					<img src={logo} className="App-logo" alt="logo" />
+					<a className="App-link" onClick={() => setView("three")}>
+						View Three
+					</a>
+				</header>
+			)}
+			{view === "three" && <ThreeApp />}
+		</div>
+	);
 }
 
 export default App;
